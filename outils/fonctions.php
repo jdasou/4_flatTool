@@ -112,6 +112,7 @@ return $date_au_format;
 }
 //================================
 
+//test
 function login($login,$pass){
     //on fait une requette SQL qui verifie que le login et le passe existe dans la table comptes
 
