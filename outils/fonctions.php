@@ -112,13 +112,15 @@ return $date_au_format;
 }
 //================================
 
-//test
+
 function login($login,$pass){
     //on fait une requette SQL qui verifie que le login et le passe existe dans la table comptes
 
     $connexion=connexion();
     $requete="SELECT*FROM comptes WHERE login_compte='".$login."' AND pass_compte=SHA1('".$pass."')";
     $resultat=mysqli_query($connexion,$requete);
+    //si requete SELECT on se pose la question
+    //si une ou plusieur lignes son attendues dans le resultat
 
 
 
