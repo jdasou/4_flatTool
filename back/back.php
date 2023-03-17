@@ -1,11 +1,11 @@
 
 <?php
-//permet d'autoriser l'usage des variable de session
+    //permet d'autoriser l'usage des variable de session
 
-session_start();
-//on teste si la variable de sessions $_SESSION['id_compte']
+    session_start();
+    //on teste si la variable de sessions $_SESSION['id_compte']
 
-if (isset($_SESSION['id_compte'])){
+    if (isset($_SESSION['id_compte'])){
 
 
 
@@ -40,6 +40,8 @@ if (isset($_SESSION['id_compte'])){
 
            case "messagerie":
 
+               include("messagerie.php");
+
             break;
          }
 
@@ -49,15 +51,16 @@ if (isset($_SESSION['id_compte'])){
         //permet de relier font.php avec front.html
         include("back.html");
 
-
     //on ferme la connexion
     mysqli_close($connexion);
     }
-else{
+
+    else{
     //l'utilisateur n'est pas autoriser
     header("Location:../log/login.php");
-}
-    ?>
+    }
+?>
+
 
 
     

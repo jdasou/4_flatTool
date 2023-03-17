@@ -29,13 +29,14 @@
 
     </section>
     <section id="titre">
-
+       <h1><?php if(isset($titre)){echo $titre;}?></h1>
         <div id="logout"> <a href="back.php?action=logout">Se deconnecter</a></div>
 
     </section>
 
     <section id="droite">
 
+        <?php if(isset($content)){echo $content;}?>
 
     </section>
 
