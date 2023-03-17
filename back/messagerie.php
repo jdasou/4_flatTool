@@ -25,6 +25,11 @@ if(isset($_SESSION['id_compte']))
             break;
 
             case "supprimer_message":
+                if (isset($_GET['id_contact'])){
+                    $requete="DELETE FROM contacts WHERE id_contact='".$_GET['id_contact']."'";
+                    $resultat=mysqli_query($connexion,$requete);
+                    $confirmation="<p> Le message a bien été supprimé</p>";
+                }
 
             break;
             }     
