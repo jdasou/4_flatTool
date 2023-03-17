@@ -1,40 +1,54 @@
 
 <?php
+//permet d'autoriser l'usage des variable de session
+
 session_start();
+//on teste si la variable de sessions $_SESSION['id_compte']
 
-//on connect le fichier de fonctions 
-require_once("../outils/fonctions.php");
-
-
-
-//on etablie une connection avec la base de donnée 
-$connexion=connexion();
+if (isset($_SESSION['id_compte'])){
 
 
 
-// formulaire de contact
 
-if(isset($_GET['action']))
-{
-     
-     //on switche sur la valeur contenue dans $_GET['action']
-     switch($_GET['action'])
 
-     {
-       case "messagerie":
-        
-        break;
-     }
+    //on connect le fichier de fonctions
+    require_once("../outils/fonctions.php");
 
+
+
+    //on etablie une connection avec la base de donnée
+    $connexion=connexion();
+
+
+
+    // formulaire de contact
+
+    if(isset($_GET['action']))
+    {
+
+         //on switche sur la valeur contenue dans $_GET['action']
+         switch($_GET['action'])
+
+         {
+           case "messagerie":
+
+            break;
+         }
+
+    }
+
+
+        //permet de relier font.php avec front.html
+        include("back.html");
+
+
+    //on ferme la connexion
+    mysqli_close($connexion);
+    }
+else{
+    //l'utilisateur n'est pas autoriser
+    header("Location:../index.php");
 }
-
-
-    //permet de relier font.php avec front.html
-    include("back.html");
-
-
-//on ferme la connexion
-mysqli_close($connexion)
     ?>
 
 

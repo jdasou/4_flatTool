@@ -2,6 +2,11 @@
 <?php
 session_start();
 
+if(isset($_SESSION['id_compte']))
+{
+    $retour="<div><a href=\"../back/back.php\">RETOUR</a></div>";
+}
+
 //on connect le fichier de fonctions 
 require_once("../outils/fonctions.php");
 
