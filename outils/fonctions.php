@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //===============================
 // la fonction connecter() permet de choisir une
 // base de données et de s'y connecter.
