@@ -121,6 +121,16 @@ function login($login,$pass){
     $resultat=mysqli_query($connexion,$requete);
     //si requete SELECT on se pose la question
     //si une ou plusieur lignes son attendues dans le resultat
+    $ligne=mysqli_fetch_object($resultat);
+
+    //on stocke en session les valeurs qui nous interessent
+    $_SESSION['id_compte']=$ligne->id_compte;
+    $_SESSION['nom_compte']=$ligne->nom_compte;
+    $_SESSION['prenom_compte']=$ligne->prenom_compte;
+    $_SESSION['img_compte']=$ligne->img_compte;
+
+
+
 
 
 
