@@ -30,6 +30,12 @@ if (isset($_SESSION['id_compte'])){
          switch($_GET['action'])
 
          {
+             case "logout":
+                 session_destroy();
+                 header("Location:../index.php");
+             break;
+
+
            case "messagerie":
 
             break;
@@ -47,7 +53,7 @@ if (isset($_SESSION['id_compte'])){
     }
 else{
     //l'utilisateur n'est pas autoriser
-    header("Location:../index.php");
+    header("Location:../log/login.php");
 }
     ?>
 
