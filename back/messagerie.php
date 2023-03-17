@@ -14,19 +14,13 @@ if(isset($_SESSION['id_compte']))
         //on switche sur la valeur contenue dans $_GET['action']
         switch($_GET['cas'])
             {
-            case "afficher_message":
-            
-
-
-            
-            break;
 
             case "avertir_message":
 
                 if (isset($_GET['id_contact'])){
-                    $confirmation="<p>Voulez-vous supprimer le message n".$_GET['id_contact']."</p>";
-                    $confirmation="<a href=\"\">oui</a>&nbsp;&nbsp;&nbsp;";
-                    $confirmation="<a href=\"back.php?action=messagerie&cas=\">non</a> ";
+                    $confirmation="<p>Voulez-vous supprimer le message n°".$_GET['id_contact']."</p>";
+                    $confirmation.="<a href=\"back.php?action=messagerie&cas=supprimer_message&id_contact=".$_GET['id_contact']."\">oui</a>&nbsp;&nbsp;&nbsp;";
+                    $confirmation.="<a href=\"back.php?action=messagerie\">non</a> ";
                 }
             break;
 
@@ -63,4 +57,4 @@ else{
     header("Location:../log/login.php");
     }
 
-?>
+
