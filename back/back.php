@@ -32,7 +32,9 @@ if (isset($_SESSION['id_compte'])){
          {
              case "logout":
                  session_destroy();
+                 //detruit toutes les varibles de SESSION qui on eté sauvegarder
                  header("Location:../index.php");
+                 //on rediriqe vers la page d'acceuil du site
              break;
 
 

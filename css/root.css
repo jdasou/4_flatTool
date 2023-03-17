@@ -7,3 +7,11 @@
 --padding_v:40px;
 --header_h:80px;
 }
+
+
+*{
+    padding:0;/*marge interne*/
+    margin:0;/*marge externe*/
+    box-sizing:border-box;/*le padding et les bordures sont inclus dans la largeur des balises*/
+    outline:none;
+}
