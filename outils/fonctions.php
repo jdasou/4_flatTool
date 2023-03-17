@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+
 
 //===============================
 // la fonction connecter() permet de choisir une
@@ -116,26 +117,30 @@ return $date_au_format;
 
 
 function login($login,$pass){
-    //on fait une requette SQL qui verifie que le login et le passe existe dans la table comptes
+
 
     $connexion=connexion();
+    //on fait une requette SQL qui verifie que le login et le passe existe dans la table comptes
+
     $requete="SELECT*FROM comptes WHERE login_compte='".$login."' AND pass_compte=SHA1('".$pass."')";
     $resultat=mysqli_query($connexion,$requete);
-    //si requete SELECT on se pose la question
-    //si une ou plusieur lignes son attendues dans le resultat
-    $ligne=mysqli_fetch_object($resultat);
-
-    //on stocke en session les valeurs qui nous interessent
-    $_SESSION['id_compte']=$ligne->id_compte;
-    $_SESSION['nom_compte']=$ligne->nom_compte;
-    $_SESSION['prenom_compte']=$ligne->prenom_compte;
-    $_SESSION['img_compte']=$ligne->img_compte;
+    $nb_ligne=mysqli_num_rows($resultat);
+    if ($nb_ligne==1) {
 
 
+        //si requete SELECT on se pose la question
+        //si une ou plusieur lignes son attendues dans le resultat
+        $ligne = mysqli_fetch_object($resultat);
 
+        //on stocke en session les valeurs qui nous interessent
+        $_SESSION['id_compte'] = $ligne->id_compte;
+        $_SESSION['nom_compte'] = $ligne->nom_compte;
+        $_SESSION['prenom_compte'] = $ligne->prenom_compte;
+        $_SESSION['img_compte'] = $ligne->img_compte;
 
-
-
+        //on redirige vers le back
+        header("location:../back/back.php");
+    }
     mysqli_close($connexion);
 
 }
