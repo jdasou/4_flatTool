@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 
 //on connect le fichier de fonctions 
 require_once("../outils/fonctions.php");
