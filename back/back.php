@@ -36,6 +36,12 @@ if(isset($_SESSION['id_compte']))
                 include("compte.php");
 
                 break;
+
+                case "page":
+
+                include("page.php");
+
+                break;
         }
     }
 

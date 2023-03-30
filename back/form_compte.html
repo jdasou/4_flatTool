@@ -1,4 +1,8 @@
-<form class="flex column align-center bg-col-1 p-t3 w100" action="back.php?action=compte&cas=<?php if(isset($action_form)){echo $action_form;} ?>" method="post">
+
+
+
+
+<form enctype="multipart/form-data"  action="back.php?action=compte&cas=<?php if(isset($action_form)){echo $action_form;} ?>" method="post">
     <label  for="nom">Nom</label>
     <input  id="nom" <?php if(isset($color_champ['nom_compte'])){echo $color_champ['nom_compte'];} ?>" placeholder="Nom [obligatoire]" type="text" name="nom_compte" value="<?php if(isset($_POST['nom_compte'])){echo $_POST['nom_compte'];} ?>">
 

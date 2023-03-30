@@ -60,13 +60,33 @@
 }
 
 #droite >form label,
-#droite >form input{
+#droite >form input,
+#droite >form textarea{
     width:100%;
     display:block;
     padding:8px;
     font-size:inherit;
     font-family:inherit;
 }
+
+#droite >form textarea{
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 200px;
+}
+#droite .options{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+#droite .options label,
+#droite .options input{
+    width: auto;
+    padding-right: 15px;
+}
+
 
 #droite >form input{
     border:1px solid #d3d3d3;
