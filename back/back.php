@@ -44,7 +44,7 @@ if(isset($_SESSION['id_compte']))
     include("back.html");
 
     //on referme la connexion
-    mysqli_close($connexion);
+    @mysqli_close($connexion);
 }
 else{
     //l'utilisateur n'est pas autorisé

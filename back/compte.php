@@ -27,11 +27,22 @@ if(isset($_SESSION['id_compte']))
 
             case "supprimer_compte":
 
-                if(isset($_GET['id_contact']))
-                {
-                    $requete="DELETE FROM contacts WHERE id_contact='" . $_GET['id_contact'] . "'";
-                    $resultat=mysqli_query($connexion,$requete);
-                    $confirmation="<p>Le message a bien été supprimé</p>";
+                if(isset($_GET['id_compte'])) {
+                    //on veriifier si ce n est pas le dernier compte autoriser en fessant une requette
+
+                    $requete = "SELECT COUNT(*) AS nb_compte FROM comptes";
+                    $resultat = mysqli_query($connexion, $requete);
+                    $ligne = mysqli_fetch_object($resultat);
+                    //si c est le dernier compte de la table (1 seul ligne dans la table )
+                    if ($ligne->nb_compte = 1) {
+                        $confirmation = "<p class=\"pas_ok\"> le dernier compte autoriser ne peut pas etre suppirmé</p>";
+
+                    } else {
+                        //$requete="DELETE FROM compte WHERE id_contact='" . $_GET['id_contact'] . "'";
+                        $resultat = mysqli_query($connexion, $requete);
+                        $confirmation = "<p class=\"ok\">Le compte a bien été supprimé</p>";
+                    }
+
                 }
 
                 break;
@@ -69,7 +80,7 @@ if(isset($_SESSION['id_compte']))
     }
 
     //on referme la connexion
-    mysqli_close($connexion);
+    @mysqli_close($connexion);
 }
 else{
     //l'utilisateur n'est pas autorisé
