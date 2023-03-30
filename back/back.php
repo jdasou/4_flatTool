@@ -2,7 +2,7 @@
 //permet d'autoriser l'usage des variables de session
 session_start();
 
-//on teste si la variable de session S_SESSION['id_compte'] 
+//on teste si la variable de session $_SESSION['id_compte']
 //existe
 if(isset($_SESSION['id_compte']))
     {
@@ -28,6 +28,12 @@ if(isset($_SESSION['id_compte']))
             case "messagerie":
 
             include("messagerie.php");
+
+            break;
+
+            case "compte";
+
+            include('compte');
 
             break;
             }     
