@@ -33,7 +33,7 @@ if(isset($_SESSION['id_compte']))
 
             case "compte";
 
-            include('compte');
+            include('compte.php');
 
             break;
             }     

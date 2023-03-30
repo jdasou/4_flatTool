@@ -15,7 +15,7 @@ if(isset($_SESSION['id_compte']))
         switch($_GET['cas'])
         {
 
-            case "avertir_message":
+            case "avertir_compte":
 
                 if (isset($_GET['id_contact'])){
                     $confirmation="<p>Voulez-vous supprimer le message n°".$_GET['id_contact']."</p>";
@@ -24,7 +24,7 @@ if(isset($_SESSION['id_compte']))
                 }
                 break;
 
-            case "supprimer_message":
+            case "supprimer_compte":
                 if (isset($_GET['id_contact'])){
                     $requete="DELETE FROM contacts WHERE id_contact='".$_GET['id_contact']."'";
                     $resultat=mysqli_query($connexion,$requete);
@@ -32,30 +32,44 @@ if(isset($_SESSION['id_compte']))
                 }
 
                 break;
+
+            case "recharger_compte":
+
+                break;
+
+            case "modifier_compte":
+                break;
+
         }
     }
-    //on selectionne tous les contacts triés par date décroissante
-    $requete="SELECT * FROM contacts ORDER BY date_contact DESC";
+    //on selectionne tous les comptes triés par date de creation
+    $requete="SELECT * FROM comptes ORDER BY id_compte ASC";
     $resultat=mysqli_query($connexion,$requete);
     //tant que $resultat contient des lignes (uplets)
+
+    // j 'initialise la varibla $content
     $content="";
     while($ligne=mysqli_fetch_object($resultat))
     {
+        // bien metttre le point apres $content pour pas le reinitialiser
         $content.="<details>";
 
         $content.="<summary>";
-        $content.="<div>". $ligne->date_contact ."</div>";
-        $content.="<div>".$ligne->nom_contact . " " . $ligne->prenom_contact ."</div>";
-        $content.="<div>". $ligne->email_contact ."</div>";
-        $content.="<div><a href=\"back.php?action=messagerie&cas=avertir_message&id_contact=" .$ligne->id_contact."\">supprimer</a></div>";
+        $content.="<div>". $ligne->id_compte ."</div>";
+
+
+        $content.="<div>". $ligne->login_compte ."</div>";
+        $content.="<div>". $ligne->email_compte ."</div>";
+        $content.="<div><a href=\"back.php?action=compte&cas=recharger_compte&id_compte=" .$ligne->id_compte."\">modifier</a></div>";
+        $content.="<div><a href=\"back.php?action=compte&cas=avertir_compte&id_compte=" .$ligne->id_compte."\">supprimer</a></div>";
         $content.="</summary>";
 
-        $content.="<div>" . $ligne->message_contact . "</div>";
+        $content.="<div>" . $ligne->nom_compte . " " . $ligne->prenom_compte . "</div>";
 
         $content.="</details>";
     }
     //on referme la connexion
-    mysqli_close($connexion);
+    @mysqli_close($connexion);
 }
 else{
     //l'utilisateur n'est pas autorisé
