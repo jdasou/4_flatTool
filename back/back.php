@@ -51,4 +51,4 @@ else{
     header("Location:../log/login.php");
 }
 
-?>
+

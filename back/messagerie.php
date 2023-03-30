@@ -3,11 +3,9 @@
 if(isset($_SESSION['id_compte']))
     {
     $titre="Gestion de la messagerie";
-    //on connecte le fichier de fonctions
-    require_once("../outils/fonctions.php");
 
-    //on établit une connexion avec la BDD
-    $connexion=connexion();
+
+
 
     if(isset($_GET['cas']))
         {
@@ -54,8 +52,7 @@ if(isset($_SESSION['id_compte']))
 
             $content.="</details>";
         }
-    //on referme la connexion
-    mysqli_close($connexion);
+
     }
 else{
     //l'utilisateur n'est pas autorisé
