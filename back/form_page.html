@@ -1,5 +1,9 @@
 <form enctype="multipart/form-data" action="back.php?action=page&cas=<?php if(isset($action_form)){echo $action_form;} ?>" method="post">
+
+
     <label for="titre_page">Titre de la page (obligatoire)</label>
+
+
     <input id="titre_page" class="<?php if(isset($color_champ['titre_page'])){echo $color_champ['titre_page'];} ?>" placeholder="Titre [obligatoire]" type="text" name="titre_page" value="<?php if(isset($_POST['titre_page'])){echo $_POST['titre_page'];} ?>">
 
     <label for="contenu">Contenu de la page (obligatoire)</label>
