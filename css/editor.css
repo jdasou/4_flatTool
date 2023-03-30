@@ -9,6 +9,7 @@
   :root {
     --primary-editor: #a0a0a0;
     --primary-editor-dark: #868686;
+    --blue:#1C20ED;
   
     --white-editor: #f3f3f3;
     --white-editor-true: #fff;
@@ -88,7 +89,7 @@
     display:flex;
     flex-wrap:wrap;
     min-height:40px;
-    background-color:var(--primary-editor);
+    background-color:var(--blue);
     justify-content: flex-start;
     position:sticky;
     top:50px;
