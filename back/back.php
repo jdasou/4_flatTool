@@ -1,11 +1,11 @@
- <?php
+<?php
 //permet d'autoriser l'usage des variables de session
 session_start();
 
-//on teste si la variable de session $_SESSION['id_compte']
+//on teste si la variable de session S_SESSION['id_compte']
 //existe
 if(isset($_SESSION['id_compte']))
-    {
+{
     //on connecte le fichier de fonctions
     require_once("../outils/fonctions.php");
 
@@ -13,43 +13,42 @@ if(isset($_SESSION['id_compte']))
     $connexion=connexion();
 
     if(isset($_GET['action']))
-        {
+    {
 
         //on switche sur la valeur contenue dans $_GET['action']
         switch($_GET['action'])
-            {
+        {
             case "logout":
-            //détruit toutes les variables de SESSION qui ont été enregistrées
-            session_destroy();
-            //on redirige vers la page d'accueil du site
-            header("Location:../index.php");
-            break;
+                //détruit toutes les variables de SESSION qui ont été enregistrées
+                session_destroy();
+                //on redirige vers la page d'accueil du site
+                header("Location:../index.php");
+                break;
 
             case "messagerie":
 
-            include("messagerie.php");
+                include("messagerie.php");
 
-            break;
+                break;
 
-            case "compte";
+            case "compte":
 
-            include('compte.php');
+                include("compte.php");
 
-            break;
-            }     
+                break;
         }
+    }
 
 
     //permet de relier front.php avec front.html
     include("back.html");
 
-mysqli_close($connexion);
-    }
-//on referme la connexion
-
+    //on referme la connexion
+    mysqli_close($connexion);
+}
 else{
     //l'utilisateur n'est pas autorisé
     header("Location:../log/login.php");
-    }
+}
 
-
+?>
