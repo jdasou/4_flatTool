@@ -5,11 +5,51 @@ if(isset($_SESSION['id_compte']))
     $titre="Gestion des comptes";
     $form="form_compte.html";
 
+    $action_form = "inserer_compte";
+
+
     if(isset($_GET['cas']))
     {
         //on switche sur la valeur contenue dans $_GET['action']
         switch($_GET['cas'])
         {
+            case "inserer_compte":
+                if (empty($_POST['nom_compte'])){
+                    $confirmation="<p class=\"pas_ok\">Le nom est obligatoire</p>";
+                }
+
+                elseif (empty($_POST['email_compte'])){
+                    $confirmation="<p class=\"pas_ok\">L'email est obligatoire</p>";
+
+                }
+                elseif (empty($_POST['login_compte'])){
+                    $confirmation="<p class=\"pas_ok\">Le login est obligatoire</p>";
+
+                }
+                elseif (empty($_POST['pass_compte'])){
+                    $confirmation="<p class=\"pas_ok\">Le mot de passe est obligatoire</p>";
+
+                }
+                else{
+                    //on enregistre le compte dans la table compte
+                    $requete="INSERT INTO comptes SET nom_compte='".security($_POST['nom_compte'])."',
+                                                      prenom_compte='".security($_POST['prenom_compte'])."',  
+                                                      email_compte='".security($_POST['email_compte'])."',  
+                                                      login_compte='".security($_POST['login_compte'])."',  
+                                                      pass_compte=SHA1('".$_POST['pass_compte']."')";
+
+                    $resultat=mysqli_query($connexion,$requete);
+
+
+                    //on confirme l enregistrement
+                    $confirmation="<p class=\"pas_ok\">le compte a bien été enregister</p>";
+
+
+                    //on vide le formulaire
+
+                }
+
+            break;
             case "avertir_compte":
 
                 if(isset($_GET['id_compte']))
@@ -44,10 +84,12 @@ if(isset($_SESSION['id_compte']))
                 break;
 
             case "recharger_compte":
+                $action_form="modifier_compte";
 
                 break;
 
             case "modifier_compte":
+                $action_form="modifier_compte";
 
                 break;
         }
