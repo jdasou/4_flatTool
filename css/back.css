@@ -1,44 +1,98 @@
 #gauche{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100vh;
-    background-color: #c3c3c3;
-
+    position:fixed;
+    top:0;
+    left:0;
+    width:280px;
+    height:100vh;
+    background-color:#c2c2c2;
 }
 
 #titre{
-    position: fixed;
-    top: 0;
-    left: 280px;
-    width: calc(100% - 280px);
-    height: 80px;
-    background-color: #d2d2d2;
-    display: flex;
-    align-items: center;
-    padding-inline: 30px ;
-
+    position:fixed;
+    top:0;
+    left:280px;
+    width:calc(100% - 280px);
+    height:80px;
+    background-color:#d2d2d2;
+    display:flex;
+    align-items:center;
+    padding-inline:30px;
 }
+
 #logout{
-    position: absolute;
-    right: 50px;
-    top: 50%;
-    transform: translate(0,-50%);
-    z-index: auto;
+    position:absolute;
+    right:50px;
+    top:50%;
+    transform:translate(0,-50%);
+    z-index:auto;
 }
 
 #droite{
-    position: fixed;
-    top: 80px;
-    left: 280px;
-    width: calc(100%- 280px);
+    position:fixed;
+    top:80px;
+    left:280px;
+    width:calc(100% - 280px);
     min-height:calc(100vh - 80px);
-    padding: 30px;
-
-
+    padding:30px 10%;
 }
-#droite details summary{
-    display: flex;
 
+#droite details summary{
+    display:flex;
+}
+
+.tab_results{
+    border:1px solid #d3d3d3;
+    border-radius:4px;
+    width:100%;
+    margin-bottom:5px;
+}
+
+.tab_results summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:5px 10px;
+}
+
+#droite >form{
+    margin-top:30px;
+    width:100%;
+}
+
+#droite >form label,
+#droite >form input{
+    width:100%;
+    display:block;
+    padding:8px;
+    font-size:inherit;
+    font-family:inherit;
+}
+
+#droite >form input{
+    border:1px solid #d3d3d3;
+    border-radius:4px;
+}
+
+#droite >form input[type=submit]{
+    background-color:#000;
+    color:#fff;
+    border-radius:4px;
+    width:auto;
+    margin:30px auto;
+}
+
+.pas_ok{
+    padding:10px;
+    background:orange;
+    color:#fff;
+    margin-bottom:15px;
+    border-radius:4px;
+}
+
+.ok{
+    padding:10px;
+    background:green;
+    color:#fff;
+    margin-bottom:15px;
+    border-radius:4px;
 }

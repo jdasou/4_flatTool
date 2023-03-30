@@ -89,6 +89,17 @@ if(isset($_SESSION['id_compte']))
 
             case "recharger_compte":
                 $action_form="modifier_compte";
+                if (isset($_GET['id_compte'])){
+
+                    $requete="SELECT * FROM comptes WHERE  id_compte='" . $_GET['id_compte'] . "'";
+                    $resultat=mysqli_query($connexion,$requete);
+                    $ligne=mysqli_fetch_object($resultat);
+                    //on reatribue a chaque champ du formulaire la valeur rcuperer dans la base
+                    $_POST['nom_compte']=$ligne->nom_compte;
+                    $_POST['prenom_compte']=$ligne->prenom_compte;
+                    $_POST['email_compte']=$ligne->email_compte;
+                    $_POST['login_compte']=$ligne->login_compte;
+                }
 
                 break;
 
