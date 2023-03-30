@@ -105,58 +105,42 @@ if(isset($_SESSION['id_compte']))
                 break;
 
             case "modifier_compte":
-                $action_form="modifier_compte";
-                if (isset($_GET['id_compte'])){
-                    //on mets a jour la table
-                    if (empty($_POST['nom_compte'])){
-                        $confirmation="<p class=\"pas_ok\">Le nom est obligatoire</p>";
-                        }
-                    elseif (empty($_POST['email_compte'])){
-                        $confirmation="<p class=\"pas_ok\">L'email est obligatoire</p>";
-                        }
-                    elseif (empty($_POST['login_compte'])){
-                        $confirmation="<p class=\"pas_ok\">Le login est obligatoire</p>";
-                        }
-                    else{
-                        //cas 1 le mdp reste vide
-                        if (empty($_POST['pass_compte'])){
-                            $requete="UPTADE comptes SET nom_compte='".security($_POST['nom_compte'])."',
-                                                         prenom_compte='".security($_POST['prenom_compte'])."',
-                                                         email_compte='".security($_POST['email_compte'])."',
-                                                         login_compte='".security($_POST['login_compte'])."'
-                                                         WHERE id_compte='".$_GET['login_compte']."'";
+                if(isset($_GET['id_compte'])){
+                    if(empty($_POST['nom_compte']))
+                    {
+                        $confirmation="<p class='pas_ok'>Le nom du compte est obligatoire</p>";
+                    }
+                    elseif (empty($_POST['email_compte']))
+                    {
+                        $confirmation="<p class='pas_ok'>Le champ email est obligatoire</p>";
+                    }
+                    elseif (empty($_POST['login_compte']))
+                    {
+                        $confirmation="<p class='pas_ok'>Le champ login est obligatoire</p>";
+                    }
+                    else
+                    {
+                        $requete="UPDATE comptes SET 
+                        nom_compte='".security($_POST['nom_compte'])."',
+                        prenom_compte='".security($_POST['prenom_compte'])."',
+                        email_compte='".security($_POST['email_compte'])."',
+                        login_compte='".security($_POST['login_compte'])."'";
 
+                        if(!empty($_POST['pass_compte']))
+                        {
+                            // modified password
+                            $requete.=",pass_compte=SHA1('".$_POST['pass_compte']."')";
                         }
-                        else{
-                            $requete="UPTADE comptes SET nom_compte='".security($_POST['nom_compte'])."',
-                                                         prenom_compte='".security($_POST['prenom_compte'])."',
-                                                         email_compte='".security($_POST['email_compte'])."',
-                                                         login_compte='".security($_POST['login_compte'])."',
-                                                         pass_compte =SHA1('".$_POST['pass_compte']."')
-                                                         WHERE id_compte='".$_GET['login_compte']."'";
-                            //cas 2 le mdp a etais ressaisi
-
-                        }
-                        $resultat =mysqli_query($connexion,$requete);
-
-
-
+                        $requete.=" WHERE id_compte='".$_GET['id_compte']."'";
+                        $resultat=mysqli_query($connexion, $requete);
                     }
 
-
-
-
-                    //on notifier la mise a jour
-                    $confirmation="<p class=\"ok\">le compte a bien été modifier</p>";
-
-                    //on vide les champ du formulaire
-
-                    foreach ($_POST AS $cle => $valeur){
-                        //unset supprime une variable
+                    foreach ($_POST as $cle => $valeur)
+                    {
                         unset($_POST[$cle]);
                     }
 
-
+                    $confirmation = "<p class='ok'>Le compte a bien été modifié ! </p> ";
                 }
 
                 break;
