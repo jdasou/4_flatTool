@@ -46,6 +46,10 @@ if(isset($_SESSION['id_compte']))
 
 
                     //on vide le formulaire
+                    foreach ($_POST AS $cle => $valeur){
+                        //unset supprime une variable
+                        unset($_POST[$cle]);
+                    }
 
                 }
 
