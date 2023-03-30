@@ -3,8 +3,9 @@
     <input id="titre_page" class="<?php if(isset($color_champ['titre_page'])){echo $color_champ['titre_page'];} ?>" placeholder="Titre [obligatoire]" type="text" name="titre_page" value="<?php if(isset($_POST['titre_page'])){echo $_POST['titre_page'];} ?>">
 
     <label for="contenu">Contenu de la page (obligatoire)</label>
+    <div class="YSeditor">
     <textarea id="contenu" placeholder="Contenu [obligatoire]" name="contenu_page"><?php if(isset($_POST['contenu_page'])){echo $_POST['contenu_page'];} ?></textarea>
-
+    </div>
     <label for="image">Illustration de la page (facultatif)</label>
     <input id="image" type="file" name="img_page" value="">
 
