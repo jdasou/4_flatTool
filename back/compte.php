@@ -137,6 +137,7 @@ if(isset($_SESSION['id_compte']))
                     }
 
                     $confirmation = "<p class='ok'>Le compte a bien été modifié ! </p> ";
+
                 }
 
                 break;
