@@ -20,10 +20,10 @@ $connexion = connexion();
 
 $requete = "SELECT * FROM pages WHERE visible='1' ORDER BY id_page";
 $resultat = mysqli_query($connexion, $requete);
-$menu_haut = "<nav id=\"menu_haut\"><menu>";
+$menu_haut = "<nav  id=\"menu_haut\"><menu>";
 while ($ligne = mysqli_fetch_object($resultat)) {
     $menu_haut .=
-        "<li><a class=\"color3\" href=\"front.php?action=page&id_page=" .
+        "<li><a class=\"color3 \" href=\"front.php?action=page&id_page=" .
         $ligne->id_page .
         "\">" .
         strtoupper($ligne->titre_page) .
