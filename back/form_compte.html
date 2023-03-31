@@ -17,6 +17,19 @@
     value="<?php if(isset($_POST['prenom_compte'])){echo $_POST['prenom_compte'];} ?>"
   />
 
+  <label for="statut">statut</label>
+  <select
+    id="statut"
+    class="<?php if(isset($color_champ['statut_compte'])){echo $color_champ['statut_compte'];} ?>"
+    name="statut_compte"
+  >
+      <option value="">selectionnez un statue [obligatoire]</option>
+      <option value="super_admin" <?php if (isset($select['super_admin'])){echo $select['super_admin'];} ?>>super admin</option>
+      <option value="admin" <?php if (isset($select['admin'])){echo $select['admin'];} ?>>Admin</option>
+      <option value="abonnée" <?php if (isset($select['abonnée'])){echo $select['abonnée'];} ?>>abonnée</option>
+  </select>
+
+
   <label for="email">Email</label>
   <input
     id="email"

@@ -535,7 +535,8 @@ p {
 
 #droite > form label,
 #droite > form input,
-#droite > form textarea {
+#droite > form textarea,
+#droite > form select{
   width: 100%;
   display: block;
   padding: 8px;
@@ -560,7 +561,8 @@ p {
   padding-right: 15px;
 }
 
-#droite > form input {
+#droite > form input,
+#droite > form select{
   border: 1px solid #d3d3d3;
   border-radius: 4px;
 }
