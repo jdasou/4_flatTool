@@ -23,27 +23,27 @@
     <script type="text/javascript" src="../js/admin.js"></script>
   </head>
   <body>
-    <section id="gauche">
-      <nav>
-        <menu>
+    <section id="gauche" class="bg-col-7">
+      <nav class="p-t3">
+        <menu class="flex column w100 p-2 gap-3">
           <li>
-            <a href="../front/front.php">Retour front</a>
+            <a href="../front/front.php" class="txt-4 pad-1 over8 rounded10 anim ">Retour <span class="dashicons dashicons-admin-home"></span></a>
+          </li>
+          <li class="">
+            <a href="back.php?action=messagerie" class="txt-4 over8 pad-1 rounded10 anim ">Gestion de la messagerie <span class="dashicons dashicons-email"></span></a>
           </li>
           <li>
-            <a href="back.php?action=messagerie">Gestion de la messagerie</a>
+            <a href="back.php?action=compte" class="txt-4 pad-1 over8 rounded10 anim ">Gestion des comptes <span class="dashicons dashicons-admin-users"></span></a>
           </li>
           <li>
-            <a href="back.php?action=compte">Gestion des comptes</a>
-          </li>
-          <li>
-            <a href="back.php?action=page">Gestion des pages</a>
+            <a href="back.php?action=page" class="txt-4 pad-1 over8 rounded10 anim ">Gestion des pages<span class="dashicons dashicons-admin-page"></span></a>
           </li>
         </menu>
       </nav>
     </section>
-    <section id="titre">
-      <h1><?php if(isset($titre)){echo $titre;} ?></h1>
-      <div id="logout"><a href="back.php?action=logout">Se déconnecter</a></div>
+    <section id="titre" class="bg-col-7 ">
+      <h1 class="txt-4"><?php if(isset($titre)){echo $titre;} ?></h1>
+      <div id="logout"><a class="txt-4" href="back.php?action=logout">Se déconnecter</a></div>
     </section>
     <section id="droite">
       <?php if(isset($confirmation)){echo $confirmation;} ?>

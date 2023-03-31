@@ -122,6 +122,19 @@ if (isset($_SESSION["id_compte"])) {
                 }
 
                 break;
+
+            case "changer_etat":
+
+                if(isset($_GET['id_page']))
+                {
+                    if(isset($_GET['etat']))
+                    {
+                        $requete="UPDATE pages SET visible='" . $_GET['etat'] . "' WHERE id_page='" . $_GET['id_page'] . "'";
+                        $resultat=mysqli_query($connexion,$requete);
+                    }
+                }
+
+
         }
     }
 
@@ -139,13 +152,13 @@ if (isset($_SESSION["id_compte"])) {
         $content.="<div>". $ligne->id_page ." - ". $ligne->titre_page ."</div>";
         if($ligne->visible==1)
             {
-            $content.="<div class=\"actions\"><a href=\"back.php?action=page&cas=changer_etat&etat=0&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-visibility\"></span></a>";
+            $content.="<div class=\"actions\"><a href=\"back.php?action=page&cas=changer_etat&etat=0&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-visibility txt-3\"></span></a>";
             }
         else{
-            $content.="<div class=\"actions\"><a href=\"back.php?action=page&cas=changer_etat&etat=1&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-hidden\"></span></a>";
+            $content.="<div class=\"actions\"><a href=\"back.php?action=page&cas=changer_etat&etat=1&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-hidden txt-3\"></span></a>";
             }
-        $content.="<a href=\"back.php?action=page&cas=recharger_page&id_page=" . $ligne->id_page . "#form_back\"><span class=\"dashicons dashicons-admin-customizer\"></span></a>";
-        $content.="<a href=\"back.php?action=page&cas=avertir_page&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-no\"></span></a></div>";
+        $content.="<a class='p-1  ' href=\"back.php?action=page&cas=recharger_page&id_page=" . $ligne->id_page . "#form_back\"><span class=\"dashicons dashicons-admin-customizer txt-3\"></span></a>";
+        $content.="<a href=\"back.php?action=page&cas=avertir_page&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-no txt-3\"></span></a></div>";
         $content.="</summary>";
 
         $content.="<div class=\"all\">Créée le : ".$ligne->date_page ."<br><br>".$ligne->contenu_page ."</div>";
