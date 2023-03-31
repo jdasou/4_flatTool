@@ -126,35 +126,33 @@ if (isset($_SESSION["id_compte"])) {
     }
 
     //on selectionne tous les comptes triés par date de création
-    $requete = "SELECT * FROM pages ORDER BY id_page ASC";
-    $resultat = mysqli_query($connexion, $requete);
+     //on selectionne tous les pages triés par date de création
+    $requete="SELECT * FROM pages ORDER BY id_page ASC";
+    $resultat=mysqli_query($connexion,$requete);
     //tant que $resultat contient des lignes (uplets)
-    $content = "";
-    while ($ligne = mysqli_fetch_object($resultat)) {
-        $content .= "<details class=\"tab_results\">";
+    $content="";
+    while($ligne=mysqli_fetch_object($resultat))
+        {
+        $content.="<details class=\"tab_results\">";
 
-        $content .= "<summary>";
-        $content .= "<div>" . $ligne->id_page . "</div>";
-        $content .= "<div>" . $ligne->contenu_page . "</div>";
-        $content .=
-            "<div><a href=\"back.php?action=page&cas=recharger_page&id_page=" .
-            $ligne->id_page .
-            "\">modifier</a></div>";
-        $content .=
-            "<div><a href=\"back.php?action=page&cas=avertir_page&id_page=" .
-            $ligne->id_page .
-            "\">supprimer</a></div>";
-        $content .= "</summary>";
+        $content.="<summary>";
+        $content.="<div>". $ligne->id_page ." - ". $ligne->titre_page ."</div>";
+        if($ligne->visible==1)
+            {
+            $content.="<div class=\"actions\"><a href=\"back.php?action=page&cas=changer_etat&etat=0&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-visibility\"></span></a>";
+            }
+        else{
+            $content.="<div class=\"actions\"><a href=\"back.php?action=page&cas=changer_etat&etat=1&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-hidden\"></span></a>";
+            }
+        $content.="<a href=\"back.php?action=page&cas=recharger_page&id_page=" . $ligne->id_page . "#form_back\"><span class=\"dashicons dashicons-admin-customizer\"></span></a>";
+        $content.="<a href=\"back.php?action=page&cas=avertir_page&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-no\"></span></a></div>";
+        $content.="</summary>";
 
-        $content .=
-            "<div>" .
-            $ligne->titre_page .
-            " " .
-            $ligne->contenu_page .
-            "</div>";
+        $content.="<div class=\"all\">Créée le : ".$ligne->date_page ."<br><br>".$ligne->contenu_page ."</div>";
 
-        $content .= "</details>";
-    }
+        $content.="</details>";
+        }
+
 } else {
     //l'utilisateur n'est pas autorisé
     header("Location:../log/login.php");
