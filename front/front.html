@@ -21,7 +21,9 @@
       <?php if(isset($retour)){echo $retour;}?>
       <img id="logo" src="../images/logo.png" alt="Flattool - Landing page" />
       <div class="flex">
-        <nav>
+        <?php if (isset($menu_haut)){echo $menu_haut;} ?>
+
+        <!--<nav id='menu_haut'>
           <menu class="flex">
             <li>
               <a class="color3" href="front.php?action=page&page=home">HOME</a>
@@ -42,7 +44,7 @@
               >
             </li>
           </menu>
-        </nav>
+        </nav>-->
         <figure class="flex">
           <a href="#"><img src="../images/flickr.png" alt="Flickr" /></a>
           <a href="#"><img src="../images/stumble.png" alt="Stumble" /></a>

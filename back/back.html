@@ -12,7 +12,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&display=swap"
       rel="stylesheet"
@@ -27,23 +26,45 @@
       <nav class="p-t3">
         <menu class="flex column w100 p-2 gap-3">
           <li>
-            <a href="../front/front.php" class="txt-4 pad-1 over8 rounded10 anim ">Retour <span class="dashicons dashicons-admin-home"></span></a>
+            <a
+              href="../front/front.php"
+              class="txt-4 pad-1 over8 rounded10 anim"
+              >Retour <span class="dashicons dashicons-admin-home"></span
+            ></a>
           </li>
           <li class="">
-            <a href="back.php?action=messagerie" class="txt-4 over8 pad-1 rounded10 anim ">Gestion de la messagerie <span class="dashicons dashicons-email"></span></a>
+            <a
+              href="back.php?action=messagerie"
+              class="txt-4 over8 pad-1 rounded10 anim"
+              >Gestion de la messagerie
+              <span class="dashicons dashicons-email"></span
+            ></a>
           </li>
           <li>
-            <a href="back.php?action=compte" class="txt-4 pad-1 over8 rounded10 anim ">Gestion des comptes <span class="dashicons dashicons-admin-users"></span></a>
+            <a
+              href="back.php?action=compte"
+              class="txt-4 pad-1 over8 rounded10 anim"
+              >Gestion des comptes
+              <span class="dashicons dashicons-admin-users"></span
+            ></a>
           </li>
           <li>
-            <a href="back.php?action=page" class="txt-4 pad-1 over8 rounded10 anim ">Gestion des pages<span class="dashicons dashicons-admin-page"></span></a>
+            <a
+              href="back.php?action=page"
+              class="txt-4 pad-1 over8 rounded10 anim"
+              >Gestion des pages<span
+                class="dashicons dashicons-admin-page"
+              ></span
+            ></a>
           </li>
         </menu>
       </nav>
     </section>
-    <section id="titre" class="bg-col-7 ">
+    <section id="titre" class="bg-col-7">
       <h1 class="txt-4"><?php if(isset($titre)){echo $titre;} ?></h1>
-      <div id="logout"><a class="txt-4" href="back.php?action=logout">Se déconnecter</a></div>
+      <div id="logout">
+        <a class="txt-4" href="back.php?action=logout">Se déconnecter</a>
+      </div>
     </section>
     <section id="droite">
       <?php if(isset($confirmation)){echo $confirmation;} ?>

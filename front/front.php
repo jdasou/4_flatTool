@@ -15,6 +15,17 @@ $contact = "form_contact.php";
 //on etablie une connection avec la base de donnée
 $connexion = connexion();
 
+//on calcul le menu_haut que pour les pages visible
+
+$requete = "SELECT * FROM pages WHERE visible='1' ORDER BY id_page";
+$resultat = mysqli_query($connexion, $requete);
+$menu_haut = "<nav id=\"menu_haut\"><menu>";
+while ($ligne = mysqli_fetch_object($resultat)) {
+
+    $menu_haut.="<li><a class=\"color3\" href=\"#\">".strtoupper($ligne->titre_page)."</a><li>";
+}
+$menu_haut.="</menu> </nav>";
+
 // formulaire de contact
 
 if (isset($_GET["action"])) {
