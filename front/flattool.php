@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <section id="flattool" class="flex pad">
   <h1 class="center">TAKE A LOOK AT <span class="color2">FLATTOOL</span></h1>
   <figure class="w4">

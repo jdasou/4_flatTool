@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "clean": "prettier ./ --write",
+    "prettier": "prettier"
+  }
+}

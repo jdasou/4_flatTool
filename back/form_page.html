@@ -1,24 +1,38 @@
-<form enctype="multipart/form-data" action="back.php?action=page&cas=<?php if(isset($action_form)){echo $action_form;} ?>" method="post">
+<form
+  enctype="multipart/form-data"
+  action="back.php?action=page&cas=<?php if(isset($action_form)){echo $action_form;} ?>"
+  method="post"
+>
+  <label for="titre_page">Titre de la page (obligatoire)</label>
 
+  <input
+    id="titre_page"
+    class="<?php if(isset($color_champ['titre_page'])){echo $color_champ['titre_page'];} ?>"
+    placeholder="Titre [obligatoire]"
+    type="text"
+    name="titre_page"
+    value="<?php if(isset($_POST['titre_page'])){echo $_POST['titre_page'];} ?>"
+  />
 
-    <label for="titre_page">Titre de la page (obligatoire)</label>
+  <label for="contenu">Contenu de la page (obligatoire)</label>
+  <div class="YSeditor">
+    <textarea
+      id="contenu"
+      placeholder="Contenu [obligatoire]"
+      name="contenu_page"
+    >
+<?php if(isset($_POST['contenu_page'])){echo $_POST['contenu_page'];} ?></textarea
+    >
+  </div>
+  <label for="image">Illustration de la page (facultatif)</label>
+  <input id="image" type="file" name="img_page" value="" />
 
-
-    <input id="titre_page" class="<?php if(isset($color_champ['titre_page'])){echo $color_champ['titre_page'];} ?>" placeholder="Titre [obligatoire]" type="text" name="titre_page" value="<?php if(isset($_POST['titre_page'])){echo $_POST['titre_page'];} ?>">
-
-    <label for="contenu">Contenu de la page (obligatoire)</label>
-    <div class="YSeditor">
-    <textarea id="contenu" placeholder="Contenu [obligatoire]" name="contenu_page"><?php if(isset($_POST['contenu_page'])){echo $_POST['contenu_page'];} ?></textarea>
-    </div>
-    <label for="image">Illustration de la page (facultatif)</label>
-    <input id="image" type="file" name="img_page" value="">
-
-    <label>Visible</label>
-    <div class="options">
-        <label for="oui">OUI</label>
-        <input id="oui" type="radio" name="visible" value="1">
-        <label for="non">NON</label>
-        <input id="non" type="radio" name="visible" value="0">
-    </div>
-    <input type="submit" name="submit" value="ENREGISTRER">
+  <label>Visible</label>
+  <div class="options">
+    <label for="oui">OUI</label>
+    <input id="oui" type="radio" name="visible" value="1" />
+    <label for="non">NON</label>
+    <input id="non" type="radio" name="visible" value="0" />
+  </div>
+  <input type="submit" name="submit" value="ENREGISTRER" />
 </form>

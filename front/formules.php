@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <section id="formules" class="flex pad">
   <h1 class="center">SING UP YOUR <span class="color2">PREMIUM<br>MEMBERSHIP</span></h1>
 

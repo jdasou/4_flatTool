@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <section id="features" class="flex pad">
   <h1 class="center">CHECK OUR <span class="color2">FEATURES</span></h1>
 

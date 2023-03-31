@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <section id="slider" class="bgcolor1 flex pad">
   <figure class="w2">
     <img class="w1" src="../images/imac.png" alt="Imac">
