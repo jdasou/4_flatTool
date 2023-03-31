@@ -99,19 +99,28 @@ if (isset($_SESSION["id_compte"])) {
 
             case "modifier_compte":
                 if (isset($_GET["id_compte"])) {
+
+                    if (isset($_POST['statut_compte'])){
+                        $select[$_POST['statut_compte']]="selected";
+                    }
                     if (empty($_POST["nom_compte"])) {
                         $confirmation = "<p class='pas_ok'>Le nom du compte est obligatoire</p>";
-                    } elseif (empty($_POST["email_compte"])) {
-                        $confirmation =
-                            "<p class='pas_ok'>Le champ email est obligatoire</p>";
-                    } elseif (empty($_POST["login_compte"])) {
-                        $confirmation =
-                            "<p class='pas_ok'>Le champ login est obligatoire</p>";
-                    } else {
+                    }
+                    elseif (empty($_POST["statut_compte"])) {
+                        $confirmation = "<p class='pas_ok'>Le statue du compte est obligatoire</p>";
+                    }
+                    elseif (empty($_POST["email_compte"])) {
+                        $confirmation = "<p class='pas_ok'>Le champ email est obligatoire</p>";
+                    }
+                    elseif (empty($_POST["login_compte"])) {
+                        $confirmation = "<p class='pas_ok'>Le champ login est obligatoire</p>";
+                    }
+                    else {
                         $requete =
                             "UPDATE comptes SET 
                         nom_compte='" . security($_POST["nom_compte"]) . "',
                         prenom_compte='" . security($_POST["prenom_compte"]) . "',
+                       statut_compte='" . ($_POST["statut_compte"]) . "',
                         email_compte='" . security($_POST["email_compte"]) . "',
                         login_compte='" . security($_POST["login_compte"]) . "'";
 
