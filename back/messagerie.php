@@ -1,5 +1,6 @@
  <?php //on teste si la variable de session S_SESSION['id_compte'] existe
- if (isset($_SESSION["id_compte"])) {
+//on teste si la variable de session S_SESSION['id_compte'] existe
+if (isset($_SESSION["id_compte"])) {
      $titre = "Gestion de la messagerie";
 
      if (isset($_GET["cas"])) {

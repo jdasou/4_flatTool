@@ -9,7 +9,7 @@ if (isset($_SESSION["id_compte"])) {
 //on connect le fichier de fonctions
 require_once "../outils/fonctions.php";
 
-$content = "home.php";
+
 $contact = "form_contact.php";
 
 //on etablie une connection avec la base de donnée
@@ -21,10 +21,14 @@ $requete = "SELECT * FROM pages WHERE visible='1' ORDER BY id_page";
 $resultat = mysqli_query($connexion, $requete);
 $menu_haut = "<nav id=\"menu_haut\"><menu>";
 while ($ligne = mysqli_fetch_object($resultat)) {
-
-    $menu_haut.="<li><a class=\"color3\" href=\"#\">".strtoupper($ligne->titre_page)."</a><li>";
+    $menu_haut .=
+        "<li><a class=\"color3\" href=\"front.php?action=page&id_page=" .
+        $ligne->id_page .
+        "\">" .
+        strtoupper($ligne->titre_page) .
+        "</a><li>";
 }
-$menu_haut.="</menu> </nav>";
+$menu_haut .= "</menu> </nav>";
 
 // formulaire de contact
 
@@ -71,9 +75,17 @@ if (isset($_GET["action"])) {
             break;
 
         case "page":
-            //si on reçoit le parametre page via la methode get(lien url)
-            if (isset($_GET["page"])) {
-                $content = $_GET["page"] . ".php";
+            //si on reçoit le parametre id page via la methode get(lien url)
+            if (isset($_GET["id_page"])) {
+
+                $requete="SELECT * FROM pages WHERE id_page='".$_GET['id_page']."'";
+                $resultat=mysqli_query($connexion,$requete);
+                $ligne=mysqli_fetch_object($resultat);
+                $content="<section id=\"page-".$ligne->id_page."\" class=\"flex pad\">";
+                $content.="<h1 class=\"center\">".$ligne->titre_page."</h1>";
+                $content.=$ligne->contenu_page;
+                $content.="</section>";
+
                 //ex : formule.php
             }
 
