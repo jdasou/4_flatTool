@@ -21,7 +21,7 @@
       <?php if(isset($retour)){echo $retour;}?>
       <img id="logo" src="../images/logo.png" alt="Flattool - Landing page" />
       <div class="flex">
-        <?php include ("home.php")?>
+
         <?php if (isset($menu_haut)){echo $menu_haut;} ?>
 
         <!--<nav id='menu_haut'>
@@ -62,6 +62,8 @@
       </div>
     </header>
     <main>
+
+        <?php if (isset($slide)){include($slide);} ?>
       <?php if(isset($content)){echo $content;} ?>
 
       <section id="blog" class="flex pad">

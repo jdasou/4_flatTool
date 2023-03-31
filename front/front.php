@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+$slide="home.php";
 
 if (isset($_SESSION["id_compte"])) {
     $retour = "<div><a href=\"../back/back.php\">RETOUR</a></div>";
@@ -77,6 +78,7 @@ if (isset($_GET["action"])) {
         case "page":
             //si on reçoit le parametre id page via la methode get(lien url)
             if (isset($_GET["id_page"])) {
+                unset($slide);
 
                 $requete="SELECT * FROM pages WHERE id_page='".$_GET['id_page']."'";
                 $resultat=mysqli_query($connexion,$requete);
