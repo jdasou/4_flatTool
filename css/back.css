@@ -1,3 +1,10 @@
+li{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+}
+
 #gauche {
   position: fixed;
   top: 0;
@@ -48,6 +55,7 @@
   border-radius: 4px;
   width: 100%;
   margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 .tab_results summary {
@@ -95,6 +103,7 @@
 }
 
 #droite > form input[type="submit"] {
+
   background-color: #000;
   color: #fff;
   border-radius: 4px;
@@ -116,4 +125,20 @@
   color: #fff;
   margin-bottom: 15px;
   border-radius: 4px;
+}
+.yes{
+  padding: 5px;
+  background: green;
+  color: #fff;
+  margin-bottom: 15px;
+  border-radius: 4px;
+
+}
+.non{
+  padding: 5px;
+  background: red;
+  color: #fff;
+  margin-bottom: 15px;
+  border-radius: 4px;
+
 }

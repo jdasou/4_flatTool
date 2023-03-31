@@ -3,6 +3,7 @@
 //on teste si la variable de session S_SESSION['id_compte'] existe
  //on teste si la variable de session S_SESSION['id_compte'] existe
  //on teste si la variable de session S_SESSION['id_compte'] existe
+ //on teste si la variable de session S_SESSION['id_compte'] existe
  if (isset($_SESSION["id_compte"])) {
      $titre = "Gestion de la messagerie";
 

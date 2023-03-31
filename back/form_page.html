@@ -30,9 +30,9 @@
   <label>Visible</label>
   <div class="options">
     <label for="oui">OUI</label>
-    <input id="oui" type="radio" name="visible" value="1" />
+    <input id="oui" type="radio" name="visible" value="1"  <?php if (isset($check[1])){echo $check[1];}?>/>
     <label for="non">NON</label>
-    <input id="non" type="radio" name="visible" value="0" />
+    <input id="non" type="radio" name="visible" value="0" <?php if (isset($check[0])){echo $check[0];}?>/>
   </div>
   <input type="submit" name="submit" value="ENREGISTRER" />
 </form>
