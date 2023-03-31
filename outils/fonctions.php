@@ -177,6 +177,7 @@ function login($login, $pass)
         $_SESSION["id_compte"] = $ligne->id_compte;
         $_SESSION["nom_compte"] = $ligne->nom_compte;
         $_SESSION["prenom_compte"] = $ligne->prenom_compte;
+        $_SESSION["statut_compte"] = $ligne->statut_compte;
         $_SESSION["img_compte"] = $ligne->img_compte;
 
         //on redirige vers le back
