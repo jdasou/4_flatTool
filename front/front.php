@@ -81,7 +81,7 @@ if (isset($_GET["action"])) {
                 $requete="SELECT * FROM pages WHERE id_page='".$_GET['id_page']."'";
                 $resultat=mysqli_query($connexion,$requete);
                 $ligne=mysqli_fetch_object($resultat);
-                $content="<section id=\"page-".$ligne->id_page."\" class=\"flex pad\">";
+                $content="<section id=\"page\" class=\" page-".$ligne->id_page."flex pad\">";
                 $content.="<h1 class=\"center\">".$ligne->titre_page."</h1>";
                 $content.=$ligne->contenu_page;
                 $content.="</section>";
