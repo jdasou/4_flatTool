@@ -50,6 +50,7 @@
     value="<?php if(isset($_POST['login_compte'])){echo $_POST['login_compte'];} ?>"
   />
 
+
   <label for="pass">Password</label>
   <input
     id="pass"
@@ -60,6 +61,8 @@
     name="pass_compte"
     value="<?php if(isset($_POST['pass_compte'])){echo $_POST['pass_compte'];} ?>"
   />
+    <label for="image">Illustration de la page (facultatif)</label>
+    <input id="image" type="file" name="img_page" value="" />
 
   <input type="submit" name="submit" value="ENREGISTRER" />
 </form>
