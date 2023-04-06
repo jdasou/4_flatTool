@@ -65,7 +65,7 @@ if(isset($_SESSION['id_compte']))
                //================================================================================
                if($dernier_id_cree==0)
                     {
-                    $confirmation="<p class=\"pas_ok\">Chaque compte doit avoir un email unique</p>";   
+                    $confirmation="<p class=\"pas_ok\">Chaque compte doit avoir un email unique</p>";
                     }
                 else
                     {
@@ -176,10 +176,27 @@ if(isset($_SESSION['id_compte']))
                     $confirmation="<p class=\"pas_ok\">Le dernier compte autorisé ne peut pas être supprimé</p>";   
                     }
                 else{
+                    $requete="SELECT * FROM comptes WHERE  id_compte='".$_GET['id_compte']."'";
+                    $resultat=mysqli_query($connexion,$requete);
+                    $ligne=mysqli_fetch_object($resultat);
+
+                    if (!empty($ligne->img_compte)){
+                        $chemin_b=str_replace("_s","_b",$ligne->img_compte);
+                        $chemin_m=str_replace("_s","_m",$ligne->img_compte);
+                        $chemin_s=$ligne->img_compte;
+
+                        //on supprime les fichiers image (@ desactive les erreur)
+                        @unlink($chemin_b);
+                        @unlink($chemin_m);
+                        @unlink($chemin_s);
+
+                    }
+
+
                     $requete2="DELETE FROM comptes WHERE id_compte='" . $_GET['id_compte'] . "'";
                     $resultat2=mysqli_query($connexion,$requete2);
                     $confirmation="<p class=\"ok\">Le compte a bien été supprimé</p>";                    
-                    }      
+                    }
                 }
 
             break;
