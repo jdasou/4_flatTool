@@ -41,6 +41,14 @@ if (isset($_GET["cas"])) {
                     pass_compte=SHA1('" .$_POST["pass_compte"] ."')";
 
                 $resultat = mysqli_query($connexion, $requete);
+                //on recupere le dernier id_compte qui vient d etre crée
+                $dernier_id_cree=mysqli_insert_id($connexion);
+
+                //si le champ parcourir est utilisé( pas vide)
+                if (isset($_FILES['img_compte'])){
+
+
+                }
 
                 //on confirme l enregistrement
                 $confirmation =

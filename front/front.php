@@ -13,8 +13,10 @@ require_once "../outils/fonctions.php";
 
 $contact = "form_contact.php";
 
+
 //on etablie une connection avec la base de donnée
 $connexion = connexion();
+
 
 //on calcul le menu_haut que pour les pages visible
 
