@@ -7,6 +7,10 @@ if (isset($_SESSION["id_compte"])) {
     $action_form = "inserer_page";
     //pour cocher pars defaut visible a oui
     $check[1] = "checked";
+    $quality=80;
+    $largeur_b=1600;
+    $largeur_m=800;
+    $largeur_s=60;
 
     if (isset($_GET["cas"])) {
         //on switche sur la valeur contenue dans $_GET['action']
@@ -120,6 +124,8 @@ if (isset($_SESSION["id_compte"])) {
                     $confirmation =
                         "<p class='ok'>la page a bien été modifié ! </p> ";
                 }
+
+
 
                 break;
 

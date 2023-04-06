@@ -1,8 +1,13 @@
 <?php
 //permet d'autoriser l'usage des variables de session
 session_start();
-//on calcule le message de bienvenue pour la personne connecter
-$titre="Bienvenue " . $_SESSION['prenom_compte']." ".$_SESSION['nom_compte'] . "[". $_SESSION['statut_compte']."]";
+//on calcule le message de bienvenue pour la personne connectée
+$titre="";
+if (isset($_SESSION['img_compte']))
+{
+    $titre.="<img class=\"avatar\" src=\"". $_SESSION['img_compte'] ."\" alt=\"\" />";
+}
+$titre.="Bienvenue"." ".$_SESSION['prenom_compte'] ." ". $_SESSION['nom_compte'] ." ". "[" . $_SESSION['statut_compte'] . "]";
 
 //on teste si la variable de session S_SESSION['id_compte']
 //existe

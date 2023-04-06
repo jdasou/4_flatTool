@@ -136,6 +136,12 @@ $_SESSION['prenom_compte']=$ligne->prenom_compte;
 $_SESSION['statut_compte']=$ligne->statut_compte;
 $_SESSION['img_compte']=$ligne->img_compte;
 
+//si il y a un avatar
+    if (!empty($ligne->img_compte))
+    {
+        $_SESSION['img_compte']=$ligne->img_compte;
+    }
+
 //on redirige vers le back
 header("location:../back/back.php");
 }
