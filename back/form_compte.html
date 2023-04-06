@@ -63,6 +63,7 @@
   />
     <label for="image">Illustration de la page (facultatif)</label>
     <input id="image" type="file" name="img_compte" value="" />
+    <?php if(isset($miniature)){echo $miniature;} ?>
 
   <input type="submit" name="submit" value="ENREGISTRER" />
 </form>

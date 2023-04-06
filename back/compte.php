@@ -215,6 +215,9 @@ if(isset($_SESSION['id_compte']))
                 $_POST['prenom_compte']=$ligne->prenom_compte;
                 $_POST['email_compte']=$ligne->email_compte;
                 $_POST['login_compte']=$ligne->login_compte;
+                if (!empty($ligne->img_compte)){
+                    $miniature="<div><img src=\"".$ligne->img_compte."\" alt=\"\" /><a href=\"back.php?action=compte&cas=supprimer_img_compte\">Supprimer</a> </div>";
+                }
                 //pour maintenir la selection de la liste déroulante
                 if(isset($ligne->statut_compte))
                     {
