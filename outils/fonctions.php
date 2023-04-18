@@ -37,7 +37,7 @@ return $extension;
 }
 
 
-//============================================ détecter l'extention du fichier
+//============================================
 function redimage($img_src,$img_dest,$dst_w,$dst_h,$quality)
 {
 if(!isset($quality))
@@ -111,43 +111,35 @@ if($format=="francais")
 return $date_au_format;	
 }
 
-
-//=============================== attention a l'ordre des $ variables tres important 1 connexion puis 2 requete idem pr $login puis $pass
-
+//==================================
 function login($login,$pass){
   $connexion=connexion();
-//on fait une requete SQL qui verifie
-$requete="SELECT * FROM comptes WHERE login_compte='".$login."' AND pass_compte=SHA1('".$pass."')";
-$resultat=mysqli_query($connexion,$requete);
-//si une requete SELECT on se pose la question
-//si une ou plusieurs lignes sont attendues dans le résultat
-//la on attends qu'une ligne car un utilisateur pour  un login et son mot passe 
-$nb_ligne=mysqli_num_rows($resultat);
-if($nb_ligne==1)
 
-{
-
-
-$ligne=mysqli_fetch_object($resultat);  //si plusieurs ligne on remplace $ligne part while
-//on stock en SESSION les valeurs qui nous interressent
-$_SESSION['id_compte']=$ligne->id_compte;
-$_SESSION['nom_compte']=$ligne->nom_compte;
-$_SESSION['prenom_compte']=$ligne->prenom_compte;
-$_SESSION['statut_compte']=$ligne->statut_compte;
-$_SESSION['img_compte']=$ligne->img_compte;
-
-//si il y a un avatar
-    if (!empty($ligne->img_compte))
+  //on fait une requete SQL qui vérifie que le login et pass existe dans la table comptes
+  $requete="SELECT * FROM comptes WHERE login_compte='".$login."' AND pass_compte=SHA1('".$pass."')";
+  $resultat=mysqli_query($connexion,$requete);
+  $nb_ligne=mysqli_num_rows($resultat);
+  if($nb_ligne!=0)
     {
-        $_SESSION['img_compte']=$ligne->img_compte;
+    //si requete SELECT on se pose la question 
+    //si une ou plusieurs lignes sont attendues dans le résultat 
+    $ligne=mysqli_fetch_object($resultat);
+    //on stocke en session les valeurs qui nous interessent
+    $_SESSION['id_compte']=$ligne->id_compte;
+    $_SESSION['nom_compte']=$ligne->nom_compte;
+    $_SESSION['prenom_compte']=$ligne->prenom_compte;
+    $_SESSION['statut_compte']=$ligne->statut_compte;
+    //si il y a un avatar
+    if(!empty($ligne->img_compte))
+      {
+      $_SESSION['img_compte']=$ligne->img_compte;   
+      }
+   
+
+    //on redirige vers le back
+    header("Location:../back/back.php");   
     }
-
-//on redirige vers le back
-header("location:../back/back.php");
-}
-
-
-mysqli_close($connexion);
+  mysqli_close($connexion);
 }
 
 ?>

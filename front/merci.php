@@ -1,4 +1,2 @@
-
-
-    <h1 class="center color4">Merci poto</h1>
+<h1 class="center color4">Merci mon poto</h1>
 

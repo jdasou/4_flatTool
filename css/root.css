@@ -1,21 +1,22 @@
-:root {
-  --color1: #1dba90; /*vert*/
-  --color2: #d34273; /*rose*/
-  --color3: #3d3d3d; /*gris*/
-  --color4: #fff; /*blanc*/
-  --color5: #ff03ea; /*fluo*/
-  --color6: #4ff502; /*vert claire*/
-  --color7: #052eff; /*bleu*/
-  --color8: #04166c; /*bleu*/
-
-  --padding_h: 15%;
-  --padding_v: 40px;
-  --header_h: 80px;
+:root{
+--color1:#1dba90;/*vert*/
+--color2:#d34273;/*rose*/
+--color3:#3d3d3d;/*gris*/
+--color4:#fff;/*blanc*/
+--padding_h:15%;
+--padding_v:80px;
+--header_h:80px;
 }
 
-* {
-  padding: 0; /*marge interne*/
-  margin: 0; /*marge externe*/
-  box-sizing: border-box; /*le padding et les bordures sont inclus dans la largeur des balises*/
-  outline: none;
+*{
+	padding:0;/*marge interne*/
+	margin:0;/*marge externe*/
+	box-sizing:border-box;/*le padding et les bordures sont inclus dans la largeur des balises*/
+	outline:none;
 }
+
+body{
+	font-family:arial, sans-serif;
+	font-size:.9rem;
+}
+
