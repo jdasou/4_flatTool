@@ -31,7 +31,8 @@ if(isset($_SESSION['id_compte']))
                 }
             else{
                 //on enregistre le compte dans la table comptes
-                $requete="INSERT INTO pages SET titre_page='".security($_POST['titre_page'])."',
+                $requete="INSERT INTO pages SET id_compte='".$_SESSION['d_compte']."',
+                                                titre_page='".security($_POST['titre_page'])."',
                                                 contenu_page='".security($_POST['contenu_page'])."',
                                                 visible='".$_POST['visible']."',
                                                 date_page=NOW()";
@@ -227,10 +228,11 @@ if(isset($_SESSION['id_compte']))
                     $confirmation="<p class=\"pas_ok\">Le contenu est obligatoire</p>";     
                     }
                 else{
-                    $requete="UPDATE pages SET titre_page='".security($_POST['titre_page'])."',
-                    contenu_page='".security($_POST['contenu_page'])."',
-                    visible='".$_POST['visible']."',
-                    date_page=NOW() WHERE id_page='". $_GET['id_page'] ."'"; 
+                    $requete="UPDATE pages SET  id_compte='".$_SESSION['id_compte']."',
+                                                titre_page='".security($_POST['titre_page'])."',
+                                                contenu_page='".security($_POST['contenu_page'])."',
+                                                visible='".$_POST['visible']."',
+                                                date_page=NOW() WHERE id_page='". $_GET['id_page'] ."'";
                     //echo $requete;
                     $resultat=mysqli_query($connexion, $requete);
 
@@ -316,7 +318,10 @@ if(isset($_SESSION['id_compte']))
 
     //tabelau d'affichage des pages
     //on selectionne tous les pages triés par date de création
-    $requete="SELECT * FROM pages ORDER BY id_page ASC";
+    $requete="SELECT p.*,c.* FROM pages AS p 
+                    INNER  JOIN comptes AS c
+                    ON p.id_compte=c.id_compte
+                    ORDER BY p.id_page ASC";
     $resultat=mysqli_query($connexion,$requete);
     //tant que $resultat contient des lignes (uplets)
     $content="";
@@ -342,7 +347,7 @@ if(isset($_SESSION['id_compte']))
         $content.="<a href=\"back.php?action=page&cas=avertir_page&id_page=" . $ligne->id_page . "\"><span class=\"dashicons dashicons-no\"></span></a></div>"; 
         $content.="</summary>"; 
 
-        $content.="<div class=\"all\">Créée le : ".$ligne->date_page ."<br><br>".$ligne->contenu_page ."</div>";
+        $content.="<div class=\"all\">Auteur:".$ligne->prenom_compte." ".$ligne->nom_compte."<br> Crée le : ".$ligne->date_page ."<br><br>".$ligne->contenu_page ."</div>";
 
         $content.="</details>"; 
         }
